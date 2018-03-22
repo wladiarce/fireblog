@@ -38,10 +38,12 @@ testem.log
 /e2e/*.js
 /e2e/*.map
 
+/src/environments
+
 # System Files
 .DS_Store
 Thumbs.db
 
 # the environment files containing the api keys
 
-/src/environments
+
