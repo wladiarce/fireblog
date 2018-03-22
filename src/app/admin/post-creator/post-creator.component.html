@@ -1,0 +1,108 @@
+<div class="container pb-2">
+  <div class="row">
+    <div class="col-sm-9">
+      <h2 class="">Create something new</h2>
+    </div>
+    <div class="col-sm-3">
+      <button class="btn btn-success" style="width:100%" (click)="postContent(postTitle.value, postSummary.value, postImg.value, postIDgen.value)" [disabled]="!formCtrl.form.valid">POST</button>
+    </div>
+  </div>
+</div>
+
+
+<form #formCtrl="ngForm">
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="text-secondary border-bottom mb-4">Post information</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5">
+      <!-- TITLE -->
+      <div class="form-group">
+        <label for="postTitle">Title</label>
+        <input #postTitle type="text" class="form-control" id="postTitle" name="title" placeholder="" (change)="generateID(postTitle.value)" required>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <!-- ID -->
+      <div class="form-group">
+          <label for="postID">Post ID</label>
+          <div class="input-group">
+            <input #postIDgen type="text" readonly class="form-control" id="postID" name="id" placeholder="" [ngModel]="postID" required>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <!-- BANNER IMG -->
+      <div class="form-group">
+        <label for="postImg">Banner image</label>
+        <input #postImg type="text" class="form-control" id="postImg" name="img" required>
+        <small id="imgHelp" class="form-text text-muted">If no custom image leave blank or set to #. The default image will be used</small>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+    <!-- SUMMARY -->
+    <div class="form-group">
+      <label for="postSummary">Summary</label>
+      <textarea #postSummary class="form-control" id="postSummary" name="summary" rows="2" required></textarea>
+    </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <h3 class="text-secondary border-bottom mt-4">Content</h3>
+  <!-- CONTENT -->
+  <div class="row">
+    <div class="col-md">
+        <nav class="sticky-top wysiwyg-nav">
+          <div class="btn-group my-2">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-paragraph" aria-hidden="true"></i>
+            </button>
+            <div class="dropdown-menu">
+              <button class="dropdown-item" onclick='document.execCommand("formatBlock", false,"H1")'>H1</button>
+              <button class="dropdown-item" onclick='document.execCommand("formatBlock", false,"H2")'>H2</button>
+              <button class="dropdown-item" onclick='document.execCommand("formatBlock", false,"H3")'>H3</button>
+              <button class="dropdown-item" onclick='document.execCommand("formatBlock", false,"H4")'>H4</button>
+              <button class="dropdown-item" onclick='document.execCommand("formatBlock", false,"H5")'>H5</button>
+              <button class="dropdown-item" onclick='document.execCommand("formatBlock", false,"H6")'>H6</button>
+              <button class="dropdown-item" onclick='document.execCommand("formatBlock", false,"P")'>Paragraph</button>
+              <button class="dropdown-item" onclick='document.execCommand("formatBlock", false,"BLOCKQUOTE")'>Blockquote</button>
+              <button class="dropdown-item" onclick="select = '<code>' + window.getSelection() + '</code>'; document.execCommand('insertHTML', false,select);">Code</button>
+            </div>
+          </div>
+
+          <button class="btn btn-secondary my-2" onclick="document.execCommand('bold')"><i class="fa fa-bold" aria-hidden="true"></i></button>
+          <button class="btn btn-secondary my-2" onclick="document.execCommand('italic')"><i class="fa fa-italic" aria-hidden="true"></i></button>
+          <button class="btn btn-secondary my-2" onclick="document.execCommand('')"><i class="fa fa-link" aria-hidden="true"></i></button>
+          <button class="btn btn-secondary my-2" onclick="document.execCommand('')"><i class="fa fa-picture-o" aria-hidden="true"></i></button>
+          <button class="btn btn-secondary my-2" onclick="document.execCommand('insertOrderedList')"><i class="fa fa-list-ol" aria-hidden="true"></i></button>
+          <button class="btn btn-secondary my-2" onclick="document.execCommand('insertUnorderedList')"><i class="fa fa-list-ul" aria-hidden="true"></i></button>
+          <!-- POPOVER HTML -->
+          <!-- <div>
+            <popover-content #htmlPopover placement="auto right" [animation]="true" [closeOnClickOutside]="false" >
+              <input id="my-html" type="text">
+              <button class="btn btn-secondary" onclick="document.execCommand('insertHTML', false, document.getElementById('my-html').value)">Insert</button>
+            </popover-content>
+            <button class="btn btn-secondary my-2" [popover]="htmlPopover">
+              <i class="fa fa-code" aria-hidden="true"></i>
+            </button>
+          </div> -->
+        </nav>
+
+
+          <!-- CONTENT -->
+        <div id="post-content" contenteditable="true" required>Write here!</div>
+    </div>
+  </div>
+</div>
+
+</form>

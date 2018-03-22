@@ -1,0 +1,25 @@
+<!-- BANNER -->
+<div class="container-fluid m-0 banner home-bg">
+  <!-- <img src="assets/img/banner.jpg" width="100%" /> -->
+  <h1>{{title}}</h1>
+  <h4>{{subtitle}}</h4>
+</div>
+
+<!-- FILTER POSTS -->
+<!-- Use kind of a navbar with the categories-->
+
+<!-- SPACER -->
+<div class="container pb-5"></div>
+<!-- LIST VIEW: BASIC -->
+<div class="container">
+  <div class=" border-bottom mb-4" *ngFor="let post of posts | async">
+    <div class="">
+      <a routerLink="/post/{{post.url_id}}">
+        <h2 class="mb-0">{{post.title}} </h2>
+      </a>
+      <h6 class="font-italic text-muted"><small>On {{post.time.toLocaleString('en-us', { month: 'long', day: 'numeric',year: 'numeric' })}}</small></h6>
+    </div>
+
+    <p class="mb-3">{{post.summary}}</p>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+/* @import "~bootstrap/dist/css/bootstrap.css" */
+@import "https://fonts.googleapis.com/css?family=Open+Sans:300i,400,700";
+
+body{
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+.banner{
+  background-color: rgba(21, 23, 151, 0.8);
+  background-image: url(#);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 150px 0 !important;
+  text-align: center;
+  color: white;
+}
+
+blockquote {
+  padding: 0 1em !important;
+  color: rgba(0,0,0,.535) !important;
+  border-left: .25em solid rgba(0,0,0,.11) !important;
+}
+
+img{
+  width:100%;
+  max-width:600px;
+}
+
+a {
+  color: #272727 !important;
+  text-decoration: none !important;
+}
+
+a:hover, a:focus {
+  color: rgb(102, 102, 102) !important;
+  text-decoration: none !important;
+}

@@ -1,0 +1,32 @@
+<div class="container pb-2">
+  <h2 class="">Add or delete resources</h2>
+  <h3 class="text-secondary border-bottom mb-4">Choose the new image to upload:</h3>
+
+  <div class="row">
+    <div class="col-sm-9 mb-3">
+        <input type="file" id="fileUpload" class="form-control-file">
+    </div>
+    <div class="col-sm-3">
+      <button class="btn btn-success" style="width:100%" (click)="uploadNew()">Upload image</button>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-sm-12">
+      <div *ngIf="uploadPercent | async as pct">
+        <progress class="progress is-info" [value]="pct" max="100">{{ pct | number }}%</progress>
+      </div>
+    </div>
+  </div>
+
+  <h2>File Gallery</h2>
+  <h5 class="text-secondary mb-4">WARNING: If you delete an image that appears in a post, it will no longer be shown.</h5>
+  <div class="row">
+    <div *ngFor="let img of uploadedImg | async" class="col-sm-4">
+      {{img.path}}
+      <img [src]="img.url" class="img-responsive">
+      <button (click)="deleteIMG(img.id, img.path)" class="btn btn-danger" style="position:absolute;top:30px;right:20px;"><i class="fa fa-trash"></i></button>
+    </div>
+  </div>
+
+</div>

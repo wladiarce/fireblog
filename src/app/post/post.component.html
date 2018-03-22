@@ -1,0 +1,13 @@
+<!-- banner with the title -->
+<!-- <div class="container-fluid m-0 banner" [style]="trustedBg"  -->
+<div class="container-fluid m-0 banner" [style]="trustedBg">
+  <h1>{{post?.title}}</h1>
+</div>
+
+<!-- SPACER -->
+<div class="container pb-5"></div>
+
+
+<div id="PostView" class="container" [innerHTML]="post?.content">
+    <!-- <markdown [data]="post?.content"></markdown> -->
+</div>

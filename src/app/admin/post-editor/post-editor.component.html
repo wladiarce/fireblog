@@ -1,0 +1,63 @@
+<div class="container pb-2">
+  <div class="row">
+    <div class="col-md-4"><h2>Edit post</h2></div>
+    <div class="col-md-8">
+<!-- Post selector -->
+        <div class="form-group">
+          <select #select1 class="form-control" [(ngModel)]="post_object">
+            <option *ngFor="let post of posts | async" [ngValue]="post">{{post.title}}</option>
+          </select>
+        </div>
+<!--  -->
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Post view + EDIT (post and metadata) -->
+<div class="container pb-2">
+  <div class="row">
+    <div class="col-8">
+      <h3>Content editor</h3>
+    </div>
+    <div class="col-4 text-right">
+      <button class="btn btn-success" (click)="saveContent()">SAVE</button>
+    </div>
+  </div>
+
+  <!-- WYSIWYG TOOLS -->
+  <nav class="sticky-top wysiwyg-nav">
+    <div class="btn-group my-2">
+      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-paragraph" aria-hidden="true"></i>
+      </button>
+      <div class="dropdown-menu">
+        <button class="dropdown-item" onclick='document.execCommand("formatBlock", false,"H1")'>H1</button>
+        <button class="dropdown-item" onclick='document.execCommand("formatBlock", false,"H2")'>H2</button>
+        <button class="dropdown-item" onclick='document.execCommand("formatBlock", false,"H3")'>H3</button>
+        <button class="dropdown-item" onclick='document.execCommand("formatBlock", false,"H4")'>H4</button>
+        <button class="dropdown-item" onclick='document.execCommand("formatBlock", false,"H5")'>H5</button>
+        <button class="dropdown-item" onclick='document.execCommand("formatBlock", false,"H6")'>H6</button>
+        <button class="dropdown-item" onclick='document.execCommand("formatBlock", false,"P")'>Paragraph</button>
+        <button class="dropdown-item" onclick='document.execCommand("formatBlock", false,"BLOCKQUOTE")'>Blockquote</button>
+        <button class="dropdown-item" onclick="select = '<code>' + window.getSelection() + '</code>'; document.execCommand('insertHTML', false,select);">Code</button>
+      </div>
+    </div>
+
+    <button class="btn btn-secondary my-2" onclick="document.execCommand('bold')"><i class="fa fa-bold" aria-hidden="true"></i></button>
+    <button class="btn btn-secondary my-2" onclick="document.execCommand('italic')"><i class="fa fa-italic" aria-hidden="true"></i></button>
+    <button class="btn btn-secondary my-2" onclick="document.execCommand('')"><i class="fa fa-link" aria-hidden="true"></i></button>
+    <button class="btn btn-secondary my-2" onclick="document.execCommand('')"><i class="fa fa-picture-o" aria-hidden="true"></i></button>
+    <button class="btn btn-secondary my-2" onclick="document.execCommand('insertOrderedList')"><i class="fa fa-list-ol" aria-hidden="true"></i></button>
+    <button class="btn btn-secondary my-2" onclick="document.execCommand('insertUnorderedList')"><i class="fa fa-list-ul" aria-hidden="true"></i></button>
+  </nav>
+
+
+  <!-- CONTENT -->
+  <div id="post-content" contenteditable="true" [innerHTML]="post_object.content"></div>
+</div>
+
+<!-- DELETE POST / UPDATE POST -->
