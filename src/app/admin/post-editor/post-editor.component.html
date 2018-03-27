@@ -43,14 +43,16 @@
         <button class="dropdown-item" onclick='document.execCommand("formatBlock", false,"H6")'>H6</button>
         <button class="dropdown-item" onclick='document.execCommand("formatBlock", false,"P")'>Paragraph</button>
         <button class="dropdown-item" onclick='document.execCommand("formatBlock", false,"BLOCKQUOTE")'>Blockquote</button>
-        <button class="dropdown-item" onclick="select = '<code>' + window.getSelection() + '</code>'; document.execCommand('insertHTML', false,select);">Code</button>
+        <button class="dropdown-item" onclick='document.execCommand("formatBlock", false,"PRE")'>Code</button>
       </div>
     </div>
 
+    <button class="btn btn-secondary my-2" onclick="document.execCommand('justifyLeft')"><i class="fa fa-align-left" aria-hidden="true"></i></button>
+    <button class="btn btn-secondary my-2" onclick="document.execCommand('justifyCenter')"><i class="fa fa-align-center" aria-hidden="true"></i></button>
     <button class="btn btn-secondary my-2" onclick="document.execCommand('bold')"><i class="fa fa-bold" aria-hidden="true"></i></button>
     <button class="btn btn-secondary my-2" onclick="document.execCommand('italic')"><i class="fa fa-italic" aria-hidden="true"></i></button>
-    <button class="btn btn-secondary my-2" onclick="document.execCommand('')"><i class="fa fa-link" aria-hidden="true"></i></button>
-    <button class="btn btn-secondary my-2" onclick="document.execCommand('')"><i class="fa fa-picture-o" aria-hidden="true"></i></button>
+    <button class="btn btn-secondary my-2" (click)="addLink()"><i class="fa fa-link" aria-hidden="true"></i></button>
+    <button class="btn btn-secondary my-2" (click)="addImg()"><i class="fa fa-picture-o" aria-hidden="true"></i></button>
     <button class="btn btn-secondary my-2" onclick="document.execCommand('insertOrderedList')"><i class="fa fa-list-ol" aria-hidden="true"></i></button>
     <button class="btn btn-secondary my-2" onclick="document.execCommand('insertUnorderedList')"><i class="fa fa-list-ul" aria-hidden="true"></i></button>
   </nav>

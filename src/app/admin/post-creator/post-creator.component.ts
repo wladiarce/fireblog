@@ -40,4 +40,12 @@ export class PostCreatorComponent implements OnInit {
     this.postCol.add({  title: title, summary: sum, banner: banner, content: this.htmlText,
                         author: environment.blog_data.author, time: new Date(), url_id: postid});
   }
+
+  addImg() {
+    const URL = prompt('Enter a URL:', 'http://');
+    const sText = document.getSelection();
+    document.getElementById('post-content').focus();
+    document.execCommand('insertImage', false, URL);
+  }
+
 }

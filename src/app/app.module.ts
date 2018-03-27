@@ -6,9 +6,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FormsModule } from '@angular/forms';
-import { MarkdownModule } from 'ngx-markdown';
 import { AngularFireStorageModule } from 'angularfire2/storage';
-import { PopoverModule } from 'ngx-popover';
 
 // ENVIRONMENT
 import { environment } from '../environments/environment';
@@ -33,8 +31,8 @@ import { AboutComponent } from './about/about.component';
 const routes: Routes = [
   { path: '', component: ListComponent },
   { path: 'post/:id', component: PostComponent },
-  // { path: 'dashboard', canActivate: [AuthGuard], component: AdminComponent,
-  { path: 'dashboard', component: AdminComponent,
+  { path: 'dashboard', canActivate: [AuthGuard], component: AdminComponent,
+  // { path: 'dashboard', component: AdminComponent,
       children: [
         {path: 'home', component: HomeComponent},
         {path: 'editor', component: PostEditorComponent},
@@ -66,9 +64,7 @@ const routes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    MarkdownModule.forRoot(),
-    AngularFireStorageModule,
-    PopoverModule
+    AngularFireStorageModule
   ],
   providers: [AuthService, AuthGuard, Title],
   bootstrap: [AppComponent]

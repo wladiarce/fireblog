@@ -34,4 +34,18 @@ export class PostEditorComponent implements OnInit {
                         });
   }
 
+  addLink() {
+    const linkURL = prompt('Enter a URL:', 'http://');
+    const sText = document.getSelection();
+    document.getElementById('post-content').focus();
+    document.execCommand('insertHTML', false, '<a href="' + linkURL + '" target="_blank">' + sText + '</a>');
+  }
+
+  addImg() {
+    const URL = prompt('Enter a URL:', 'http://');
+    const sText = document.getSelection();
+    document.getElementById('post-content').focus();
+    document.execCommand('insertImage', false, URL);
+  }
+
 }
